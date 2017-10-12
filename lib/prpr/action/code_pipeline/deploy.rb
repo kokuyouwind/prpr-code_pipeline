@@ -26,30 +26,22 @@ module Prpr
         end
 
         def aws
-          @aws ||= ::Aws::CodeDeploy::Client.new(
+          @aws ||= ::Aws::CodePipeline::Client.new(
             region: env[:code_deploy_region] || 'ap-northeast-1',
             access_key_id: env[:code_deploy_aws_key],
             secret_access_key: env[:code_deploy_aws_secret],
           )
         end
 
-        def create_deployment(deployment_group_name, commit_id)
-          aws.create_deployment({
-            application_name: env[:code_deploy_application_name],
-            deployment_group_name: deployment_group_name,
-            revision: {
-              revision_type: "GitHub",
-              git_hub_location: {
-                repository: env[:code_deploy_repository],
-                commit_id: commit_id
-              }
-            }
+        def create_deployment(pipeline_name, commit_id)
+          aws.start_pipeline_execution({
+            name: pipeline_name
           })
         end
 
         def message(deployment)
           Prpr::Publisher::Message.new(
-            body: deployment.deployment_id,
+            body: deployment.pipeline_execution_id,
             from: { login: 'aws' },
             room: env[:code_deploy_room])
         end
