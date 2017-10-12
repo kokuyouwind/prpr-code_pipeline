@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'prpr/code_deploy/version'
+require 'prpr/code_pipeline/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "prpr-code_deploy"
-  spec.version       = Prpr::CodeDeploy::VERSION
-  spec.authors       = ["mzp"]
-  spec.email         = ["mzpppp@gmail.com"]
+  spec.name          = "prpr-code_pipeline"
+  spec.version       = Prpr::CodePipeline::VERSION
+  spec.authors       = ["kokuyouwind"]
+  spec.email         = ["kokuyouwind@gmail.com"]
 
-  spec.summary       = "Prpr plugin to deplay module via AWS CodeDeploy"
+  spec.summary       = "Prpr plugin to deplay module via AWS CodePipeline"
   spec.description   = "When someone merge PR to deployment/XXX, deploy it"
-  spec.homepage      = "https://github.com/mzp/prpr-code_deploy"
+  spec.homepage      = "https://github.com/kokuyouwind/prpr-code_pipeline"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

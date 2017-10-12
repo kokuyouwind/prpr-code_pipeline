@@ -1,8 +1,8 @@
 module Prpr
     module Handler
-      class CodeDeploy < Base
+      class CodePipeline < Base
         handle Event::Push do
-          Action::CodeDeploy::Deploy.new(event).call
+          Action::CodePipeline::Deploy.new(event).call
         end
       end
     end

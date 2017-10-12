@@ -1,5 +1,5 @@
 module Prpr
-  module CodeDeploy
+  module CodePipeline
     VERSION = "0.1.0"
   end
 end

@@ -2,7 +2,7 @@ require 'aws-sdk-resources'
 
 module Prpr
   module Action
-    module CodeDeploy
+    module CodePipeline
       class Deploy < Base
         def call
           if name = deployment_group_name(event)
