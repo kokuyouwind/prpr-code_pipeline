@@ -6,8 +6,8 @@ module Prpr
       class Deploy < Base
         def call
           if name = deployment_group_name(event)
-            deployment = create_deployment(name, deploy_commit)
-            Prpr::Publisher::Adapter::Base.broadcast message(deployment)
+            create_deployment(name, deploy_commit)
+            # AWS側でCodePipeline開始を通知するので、prprからは通知を送らない
           end
         end
 
